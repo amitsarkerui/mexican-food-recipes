@@ -57,7 +57,8 @@ const Register = () => {
           photoURL: photoUrl,
         });
         console.log(registeredUser);
-        e.target.reset();
+        toast.success("User created successfully");
+        // e.target.reset();
       })
       .catch((err) => setError(err.message));
   };
@@ -166,16 +167,6 @@ const Register = () => {
             </span>
           </div>
           <hr className="my-6" />
-          <div>
-            <div className="flex items-center font-semibold btn btn-outline">
-              <FaGooglePlusG className="text-xl mr-2" />
-              <span>Continue with Google</span>
-            </div>
-            <div className="flex items-center font-semibold btn btn-outline mt-3">
-              <FaGithub className="text-xl mr-2" />
-              <span>Continue with Github</span>
-            </div>
-          </div>
         </div>
         <ToastContainer
           position="top-center"

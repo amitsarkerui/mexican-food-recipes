@@ -1,8 +1,42 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGooglePlusG } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContextProvider } from "../../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
+  const { logIn, continueWithGoogle, continueWithGitHub } =
+    useContext(AuthContextProvider);
+  const [error, setError] = useState("");
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    logIn(email, password)
+      .then((result) => {
+        setError("");
+        const loggedUser = result.user;
+        e.target.reset();
+        toast.success("Login successfully");
+      })
+      .catch((err) => setError(err.message));
+  };
+  const handleGoogle = () => {
+    continueWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
+        toast.success("Login successfully");
+      })
+      .catch((err) => setError(err.message));
+  };
+  const handleGithub = () => {
+    continueWithGitHub()
+      .then((result) => {
+        const loggedUser = result.user;
+        toast.success("Login successfully (Github)");
+      })
+      .catch((err) => setError(err.message));
+  };
   return (
     <div className="mt flex min-h-full flex-col justify-center items-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -12,7 +46,12 @@ const Login = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form
+          onSubmit={handleLogin}
+          className="space-y-6"
+          action="#"
+          method="POST"
+        >
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
               Email address
@@ -54,6 +93,7 @@ const Login = () => {
               />
             </div>
           </div>
+          <p className="text-red-500 mt-4 font-medium">{error}</p>
           <p className="text-red-500"></p>
           <div>
             <button
@@ -75,16 +115,34 @@ const Login = () => {
         </div>
         <hr className="my-6" />
         <div>
-          <div className="flex items-center font-semibold btn btn-outline">
+          <button
+            onClick={handleGoogle}
+            className="flex items-center font-semibold btn btn-outline w-full"
+          >
             <FaGooglePlusG className="text-xl mr-2" />
             <span>Continue with Google</span>
-          </div>
-          <div className="flex items-center font-semibold btn btn-outline mt-3">
+          </button>
+          <button
+            onClick={handleGithub}
+            className="flex items-center font-semibold btn btn-outline mt-3 w-full"
+          >
             <FaGithub className="text-xl mr-2" />
             <span>Continue with Github</span>
-          </div>
+          </button>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
