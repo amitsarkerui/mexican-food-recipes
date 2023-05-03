@@ -1,6 +1,9 @@
 import React from "react";
 import { FaList, FaSmile, FaUserGraduate } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
 
 const ChefDetails = () => {
   const chefDetails = useLoaderData();
@@ -25,7 +28,7 @@ const ChefDetails = () => {
         <h2 className="text-center mt-4 text-3xl font-bold text-gray-800">
           {chef_name}
         </h2>
-        <div className="flex text-center flex-col justify-evenly mt-6 md:flex-row max-w-screen-sm mx-auto">
+        <div className="flex text-center flex-col gap-3 justify-evenly mt-6 md:flex-row max-w-screen-sm mx-auto">
           <div className="flex items-center gap-2 font-medium py-2 px-3 bg-orange-500 rounded-xl text-white mx-auto text-center">
             <FaUserGraduate />
             <span>Ex : {experience} </span>
@@ -51,18 +54,21 @@ const ChefDetails = () => {
         </h2>
         <div className="container mx-auto grid grid-cols-1 gap-7 md:grid-cols-3">
           {recipes.map((sr) => (
-            <div className="p-6 border border-gray-400" key={sr.recipe_id}>
+            <div
+              className="p-6 border border-gray-200 rounded-lg flex flex-col"
+              key={sr.recipe_id}
+            >
               <img
                 className="w-full h-96 object-cover rounded-xl"
                 src={sr.recipe_cover_image}
                 alt=""
               />
               <h2 className="my-6 text-2xl font-bold">
-                Recipe Name : {sr.recipe_name}
+                Recipe Name: {sr.recipe_name}
               </h2>
               <div className="flex gap-3">
                 <p className="font-bold text-gray-800">Ingredients:</p>
-                <ul className="grid grid-cols-3 gap-3">
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {sr.ingredients.map((sri) => (
                     <li className="bg-orange-500 text-white py-1 px-3 rounded-full text-center">
                       {sri}
@@ -72,10 +78,24 @@ const ChefDetails = () => {
               </div>
               <p className="text-gray-600 mt-6">
                 <span className="font-bold text-gray-800 mr-2">
-                  Cooking Method:{" "}
-                </span>{" "}
+                  Cooking Method:
+                </span>
                 {sr.cooking_method}
               </p>
+              <div className="flex-grow"></div>
+              <div className="flex items-center mt-5">
+                <Rating
+                  style={{ maxWidth: "120px" }}
+                  value={sr.rating}
+                  readOnly
+                />
+                <span className="font-semibold text-gray-700 ml-2">
+                  ({sr.rating})
+                </span>
+              </div>
+              <button className="w-full bg-orange-500 py-3 text-white font-semibold rounded-lg mt-6">
+                Add to favorite
+              </button>
             </div>
           ))}
         </div>
