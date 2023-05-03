@@ -27,7 +27,7 @@ const Home = () => {
       </div>
 
       {/* Chef area */}
-      <div className="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-3 text-center mt-24 mb-10">
+      <div className="container px-4 mx-auto grid grid-cols-1 gap-10 md:grid-cols-3 text-center mt-24 mb-10">
         {chef.map((singleChef) => (
           <div className="text-center mb-20">
             <img
@@ -38,16 +38,16 @@ const Home = () => {
             <h1 className="text-3xl font-bold mt-4 text-gray-700">
               {singleChef.chef_name}
             </h1>
-            <div className="flex justify-evenly gap-2 mt-4">
-              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600">
+            <div className="flex text-center flex-col justify-evenly gap-2 mt-4 md:flex-row ">
+              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600 mx-auto text-center">
                 <FaUserGraduate />
                 <span>Ex : {singleChef.experience} </span>
               </div>
-              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600">
+              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600 mx-auto text-center">
                 <FaList />
                 <span>Total Recipes : {singleChef.recipes.length} </span>
               </div>
-              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600">
+              <div className="flex items-center gap-2 font-medium py-2 px-3 bg-blue-50 rounded-xl text-gray-600 mx-auto text-center">
                 <FaSmile />
                 <span>Likes : {singleChef.number_of_likes} </span>
               </div>
@@ -63,14 +63,15 @@ const Home = () => {
       </div>
 
       {/* video area */}
-      <div className="">
+      <div className="container mx-auto px-4">
         <h2 className="text-center text-4xl font-bold mb-8">
           Watch our recipes
         </h2>
         <iframe
-          className=""
-          width="1920"
-          height="800"
+          style={{ height: "800px" }}
+          className="rounded-lg w-full "
+          //   width="1530"
+          //   height="800"
           src="https://www.youtube.com/embed/hvF5wWChxbk"
           title="YouTube video player"
           frameborder="0"
@@ -79,6 +80,25 @@ const Home = () => {
         ></iframe>
       </div>
       {/* Join with us */}
+      <div className="container px-4 mx-auto p-10 bg-blue-50 rounded-xl grid grid-cols-1 gap-5 md:grid-cols-5 items-center my-24">
+        <div className="col-span-3">
+          <h6 className=" font-bold text-orange-500 mb-3">JOIN US</h6>
+          <h2 className="text-4xl font-bold leading-normal">
+            Indulge in the Art of Mexican Cuisine
+            <br />
+            Begin the Culinary Adventure by Sharing <br /> Your Incredible
+            Recipes!
+          </h2>
+          <button className="py-3 px-8 rounded-lg bg-orange-500 font-medium text-white mt-6 hover:bg-gray-800">
+            <Link>Join now</Link>
+          </button>
+        </div>
+        <img
+          className="rounded-lg col-span-2"
+          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80"
+          alt=""
+        />
+      </div>
     </div>
   );
 };
