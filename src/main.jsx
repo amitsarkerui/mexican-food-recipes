@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout/Layout.jsx";
 import Home from "./Layout/components/Home/Home.jsx";
+import ChefDetails from "./Layout/components/ChefDetails/ChefDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,14 @@ const router = createBrowserRouter([
         element: <Home></Home>,
         loader: () =>
           fetch("https://mexican-food-server-amitsarkerui.vercel.app/chef"),
+      },
+      {
+        path: "/chef/:id",
+        element: <ChefDetails></ChefDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://mexican-food-server-amitsarkerui.vercel.app/chef/${params.id}`
+          ),
       },
     ],
   },

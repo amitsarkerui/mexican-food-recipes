@@ -29,7 +29,7 @@ const Home = () => {
       {/* Chef area */}
       <div className="container px-4 mx-auto grid grid-cols-1 gap-10 md:grid-cols-3 text-center mt-24 mb-10">
         {chef.map((singleChef) => (
-          <div className="text-center mb-20">
+          <div key={singleChef.id} className="text-center mb-20">
             <img
               className=" mx-auto rounded-full h-96 w-96 object-cover"
               src={singleChef.chef_picture_url}
@@ -56,7 +56,7 @@ const Home = () => {
               {singleChef.short_bio}
             </h3>
             <button className="py-3 px-8 rounded-lg bg-orange-500 font-medium text-white mt-4 hover:bg-gray-800">
-              <Link>View All Recipes</Link>
+              <Link to={`/chef/${singleChef.id}`}>View All Recipes</Link>
             </button>
           </div>
         ))}
@@ -80,7 +80,7 @@ const Home = () => {
         ></iframe>
       </div>
       {/* Join with us */}
-      <div className="container px-4 mx-auto p-10 bg-blue-50 rounded-xl grid grid-cols-1 gap-5 md:grid-cols-5 items-center my-24">
+      <div className="container pl-16 mx-auto p-10 bg-blue-50 rounded-xl grid grid-cols-1 gap-5 md:grid-cols-5 items-center my-24">
         <div className="col-span-3">
           <h6 className=" font-bold text-orange-500 mb-3">JOIN US</h6>
           <h2 className="text-4xl font-bold leading-normal">
