@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGithub, FaGooglePlusG } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -57,7 +58,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
             >
               Sign in
             </button>
@@ -71,6 +72,17 @@ const Login = () => {
               Create one
             </Link>
           </span>
+        </div>
+        <hr className="my-6" />
+        <div>
+          <div className="flex items-center font-semibold btn btn-outline">
+            <FaGooglePlusG className="text-xl mr-2" />
+            <span>Continue with Google</span>
+          </div>
+          <div className="flex items-center font-semibold btn btn-outline mt-3">
+            <FaGithub className="text-xl mr-2" />
+            <span>Continue with Github</span>
+          </div>
         </div>
       </div>
     </div>
