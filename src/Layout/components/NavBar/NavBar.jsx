@@ -24,7 +24,9 @@ const NavBar = () => {
           </ul>
         </div>
         <div>
-          <button className="btn bg-orange-500 border-none">Login</button>
+          <Link to={"/login"}>
+            <button className="btn bg-orange-500 border-none">Login</button>
+          </Link>
         </div>
       </div>
     </div>
