@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaList, FaSmile, FaUserGraduate } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ChefDetails = () => {
   const chefDetails = useLoaderData();
@@ -16,6 +18,14 @@ const ChefDetails = () => {
     short_bio,
     recipes,
   } = chefDetails;
+
+  const [disabledButtons, setDisabledButtons] = useState([]);
+
+  const handleAddToFavorite = (recipeId) => {
+    setDisabledButtons((prevDisabledButtons) => [recipeId]);
+    toast.success("Added to favorite");
+  };
+  const isButtonDisabled = (recipeId) => disabledButtons.includes(recipeId);
   return (
     <div>
       {/* Banner */}
@@ -93,13 +103,33 @@ const ChefDetails = () => {
                   ({sr.rating})
                 </span>
               </div>
-              <button className="w-full bg-orange-500 py-3 text-white font-semibold rounded-lg mt-6">
-                Add to favorite
+              <button
+                className={`w-full py-3 text-white font-semibold rounded-lg mt-4 ${
+                  isButtonDisabled(sr.recipe_id)
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-orange-500"
+                }`}
+                onClick={() => handleAddToFavorite(sr.recipe_id)}
+                disabled={isButtonDisabled(sr.recipe_id)}
+              >
+                Added to favorite
               </button>
             </div>
           ))}
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
