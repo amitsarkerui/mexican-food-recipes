@@ -9,6 +9,17 @@ const NavBar = () => {
       .then(() => console.log("User LoggedOutOut"))
       .catch((err) => console.log(err.message));
   };
+  const renderUserImage = () => {
+    return (
+      <img
+        id="user-name"
+        className="w-12 h-12 rounded-full"
+        src={user.photoURL}
+        alt=""
+        title={user.displayName}
+      />
+    );
+  };
   return (
     <div className="container mx-auto my-6">
       <div className="flex gap-3 flex-col md:flex-row items-center justify-between">
@@ -33,11 +44,7 @@ const NavBar = () => {
         <div>
           {user ? (
             <div className="flex items-center gap-5">
-              <img
-                className="w-12 h-12 rounded-full"
-                src={user.photoURL}
-                alt=""
-              />
+              {renderUserImage()}
               <Link>
                 <button
                   onClick={handleLogOut}
