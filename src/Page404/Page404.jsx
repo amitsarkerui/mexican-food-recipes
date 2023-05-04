@@ -5,7 +5,11 @@ const Page404 = () => {
   return (
     <section className="flex items-center h-full sm:p-16 dark:bg-gray-900 dark:text-gray-100">
       <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center sm:max-w-md">
-        <svg
+        <img
+          src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1683180420~exp=1683181020~hmac=33c9764d21913b16ca72d999e0247ab16cef728562731b12c314307fa92d2e11"
+          alt=""
+        />
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
           className="w-40 h-40 dark:text-gray-600"
@@ -29,7 +33,7 @@ const Page404 = () => {
             fill="currentColor"
             points="383.958 182.63 360.042 161.37 338.671 185.412 314.63 164.042 293.37 187.958 317.412 209.329 296.042 233.37 319.958 254.63 341.329 230.588 365.37 251.958 386.63 228.042 362.588 206.671 383.958 182.63"
           ></polygon>
-        </svg>
+        </svg> */}
         <p className="text-3xl">
           Looks like our services are currently offline
         </p>

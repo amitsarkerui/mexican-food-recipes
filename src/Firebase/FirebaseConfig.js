@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD_XbC82B3fXu9iOd9Qlw5wkhxhqfFnnz0",
-  authDomain: "mexican-food-client.firebaseapp.com",
-  projectId: "mexican-food-client",
-  storageBucket: "mexican-food-client.appspot.com",
-  messagingSenderId: "470230142474",
-  appId: "1:470230142474:web:b6d508983da93575b4d9f3",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
