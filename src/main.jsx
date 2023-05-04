@@ -9,6 +9,7 @@ import ChefDetails from "./Layout/components/ChefDetails/ChefDetails.jsx";
 import Login from "./Layout/components/Login/Login.jsx";
 import Register from "./Layout/components/Register/Register.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/chef/:id",
-        element: <ChefDetails></ChefDetails>,
+        element: (
+          <PrivateRoute>
+            <ChefDetails></ChefDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://mexican-food-server-amitsarkerui.vercel.app/chef/${params.id}`
