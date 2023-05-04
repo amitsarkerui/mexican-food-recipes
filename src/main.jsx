@@ -12,6 +12,7 @@ import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
 import Page404 from "./Page404/Page404.jsx";
 import ForgetPassword from "./Layout/components/Login/ForgetPassword/ForgetPassword.jsx";
+import Blog from "./Layout/components/Blog/Blog.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/forgetPassword",
         element: <ForgetPassword></ForgetPassword>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },

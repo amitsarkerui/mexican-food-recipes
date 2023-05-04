@@ -30,7 +30,7 @@ const NavBar = () => {
           </h2>
         </Link>
         <div>
-          <ul className="flex flex-col gap-1 md:gap-6 md:flex-row font-medium text-lg text-gray-600">
+          <ul className="flex flex-col items-center gap-1 md:gap-6 md:flex-row font-medium text-lg text-gray-600">
             <ActiveLink to={"/"} isActive={location.pathname === "/"}>
               Home
             </ActiveLink>
