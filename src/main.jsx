@@ -10,6 +10,7 @@ import Login from "./Layout/components/Login/Login.jsx";
 import Register from "./Layout/components/Register/Register.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
+import Page404 from "./Page404/Page404.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,15 +35,19 @@ const router = createBrowserRouter([
             `https://mexican-food-server-amitsarkerui.vercel.app/chef/${params.id}`
           ),
       },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
   {
-    path: "/login",
-    element: <Login></Login>,
-  },
-  {
-    path: "/register",
-    element: <Register></Register>,
+    path: "*",
+    element: <Page404></Page404>,
   },
 ]);
 
