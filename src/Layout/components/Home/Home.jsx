@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaUserGraduate, FaList, FaSmile } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 
 const Home = () => {
   const chef = useLoaderData();
@@ -30,11 +31,14 @@ const Home = () => {
       <div className="container px-4 mx-auto grid grid-cols-1 gap-10 md:grid-cols-3 text-center mt-24 mb-10">
         {chef.map((singleChef) => (
           <div key={singleChef.id} className="text-center mb-20">
-            <img
-              className=" mx-auto rounded-full h-96 w-96 object-cover"
-              src={singleChef.chef_picture_url}
-              alt=""
-            />
+            <LazyLoad threshold={0.5}>
+              <img
+                className=" mx-auto rounded-full h-96 w-96 object-cover"
+                src={singleChef.chef_picture_url}
+                alt=""
+              />
+            </LazyLoad>
+
             <h1 className="text-3xl font-bold mt-4 text-gray-700">
               {singleChef.chef_name}
             </h1>

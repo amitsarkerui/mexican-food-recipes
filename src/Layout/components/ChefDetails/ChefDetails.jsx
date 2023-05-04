@@ -6,6 +6,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LazyLoad from "react-lazy-load";
 
 const ChefDetails = () => {
   const chefDetails = useLoaderData();
@@ -68,11 +69,13 @@ const ChefDetails = () => {
               className="p-6 border border-gray-200 rounded-lg flex flex-col"
               key={sr.recipe_id}
             >
-              <img
-                className="w-full h-96 object-cover rounded-xl"
-                src={sr.recipe_cover_image}
-                alt=""
-              />
+              <LazyLoad threshold={0.5}>
+                <img
+                  className="w-full h-96 object-cover rounded-xl"
+                  src={sr.recipe_cover_image}
+                  alt=""
+                />
+              </LazyLoad>
               <h2 className="my-6 text-2xl font-bold">
                 Recipe Name: {sr.recipe_name}
               </h2>
