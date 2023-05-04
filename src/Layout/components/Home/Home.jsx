@@ -99,7 +99,7 @@ const Home = () => {
         </div>
         <img
           className="rounded-lg col-span-2"
-          src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80"
+          src="https://img.freepik.com/free-vector/coloured-chefdesign_1152-72.jpg?w=826&t=st=1683216461~exp=1683217061~hmac=fcce3fc679e68d90996bf6cea8172e1c092e6f9b742bf036a1891defae79db21"
           alt=""
         />
       </div>
