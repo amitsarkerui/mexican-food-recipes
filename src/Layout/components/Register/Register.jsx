@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaGithub, FaGooglePlusG } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContextProvider } from "../../../AuthProvider/AuthProvider";
@@ -8,6 +8,10 @@ import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { register } = useContext(AuthContextProvider);
+
+  const navigate = useNavigate();
+  const fromLink = location.state?.from?.pathname || "/";
+
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [email, setEmail] = useState("");
@@ -58,6 +62,7 @@ const Register = () => {
         });
         console.log(registeredUser);
         toast.success("User created successfully");
+        navigate(fromLink);
         // e.target.reset();
       })
       .catch((err) => setError(err.message));

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContextProvider } from "../../../AuthProvider/AuthProvider";
+import ActiveLink from "../../../ActiveLink/ActiveLink";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContextProvider);
@@ -30,15 +31,21 @@ const NavBar = () => {
         </Link>
         <div>
           <ul className="flex flex-col gap-1 md:gap-6 md:flex-row font-medium text-lg text-gray-600">
-            <li>
-              <Link to={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/blog"}>Blog</Link>
-            </li>
-            <li>
-              <Link to={"/"}>Contact</Link>
-            </li>
+            <ActiveLink to={"/"} isActive={location.pathname === "/"}>
+              Home
+            </ActiveLink>
+            <ActiveLink to={"/blog"} isActive={location.pathname === "/blog"}>
+              Blog
+            </ActiveLink>
+            <ActiveLink to={"/login"} isActive={location.pathname === "/login"}>
+              Login
+            </ActiveLink>
+            <ActiveLink
+              to={"/register"}
+              isActive={location.pathname === "/register"}
+            >
+              Register
+            </ActiveLink>
           </ul>
         </div>
         <div>
