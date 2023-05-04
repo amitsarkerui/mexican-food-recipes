@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContextProvider } from "../../../AuthProvider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContextProvider);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log("User LoggedOutOut"))
+      .catch((err) => console.log(err.message));
+  };
   return (
     <div className="container mx-auto my-6">
       <div className="flex gap-3 flex-col md:flex-row items-center justify-between">
@@ -24,9 +31,27 @@ const NavBar = () => {
           </ul>
         </div>
         <div>
-          <Link to={"/login"}>
-            <button className="btn bg-orange-500 border-none">Login</button>
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-5">
+              <img
+                className="w-12 h-12 rounded-full"
+                src={user.photoURL}
+                alt=""
+              />
+              <Link>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-outline border-gray-700 text-gray-700"
+                >
+                  Logout
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn bg-orange-500 border-none">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
